@@ -1,0 +1,85 @@
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  height: 100vh;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.text {
+  color: #f2f2f2;
+  font-family: 'Sansita', sans-serif;
+  font-size: 55pt;
+  /*padding: 8px 12px;*/
+  /*margin-top: 10%;*/
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.dots {
+	/*display: none;*/
+}
+
+.active {
+  /*background-color: #717171;*/
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.title {
+  margin-top: 10%;
+  font-family: 'Sansita', sans-serif;
+  font-size: 55pt;
+  color: #f98697;
+  color: #655349;
+}
+
+.input-group {
+  margin-top: 75px;
+}
+
+img {
+  height: 100vh;
+  width: 1000px;
+}
+
+.caption {
+  height: 100vh;
+  margin: 10%;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
