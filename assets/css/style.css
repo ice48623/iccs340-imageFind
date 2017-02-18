@@ -1,0 +1,14 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.grid-item { width: 200px; }
+.grid-item--width2 { width: 400px; }
+
+img {
+  width: 200px;
+}
