@@ -22,8 +22,36 @@
       <h1>Masonry - appended</h1>
       <p><button class="append-button">Append new items</button></p>
 
+      <!-- Search Result -->
       <div class="grid">
       </div>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Modal Header</h2>
+          </div>
+          <div class="modal-body">
+            <h1 id="img-id"></h1>
+            <p>Some text in the Modal Body</p>
+            <p>Some other text...</p>
+            <p>Some other text...</p>
+            <p>Some other text...</p>
+            <p>Some other text...</p>
+            <p>Some other text...</p>
+            <p>Some other text...</p>
+          </div>
+          <div class="modal-footer">
+            <h3>Modal Footer</h3>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
   </body>
@@ -37,15 +65,12 @@
     });
 
     $('.append-button').on( 'click', function() {
-      genImage();
+      genImage_500px();
+      // openModel();
       // var elems = [ getItemElement(), getItemElement(), getItemElement() ];
       // var $item = $('<img class="grid-item" src=http://eskipaper.com/images/landscape-sunset-15.jpg>');
       // var $elems = $( elems );
       // $grid.append( $item ).masonry( 'appended', $item );
-
-
-
-
     });
 
     // create <div class="grid-item"></div>
@@ -59,20 +84,50 @@
       return elem;
     }
 
-    function genImage(){
+    function genImage_500px(){
       var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4"
       var url = "https://api.500px.com/v1/photos/search?term=" + "nature" + "&" + cus_key + "&image_size=1080"
       $.get(url,function(json){
         $.each(json.photos,function(i, item){
           console.log(item);
-          var $item = $('<a href=https://500px.com' + item.url + ' target="_blank">' + '<img class="grid-item" src='+ item.image_url + '>' + '/>');
+          var $item = $('<img id="' + item.id + '" class="grid-item" src="'+ item.image_url + '"onclick="openModel(' + item.id + ')">');
           $grid.append( $item ).masonry( 'appended', $item );
           $grid.masonry('layout');
         })
       })
-
-
     }
+
+    function openModel(id){
+      // Get the modal
+      console.log(id);
+      var modal = document.getElementById('myModal');
+
+      // Get the button that opens the modal
+      // var btn = document.getElementById('id');
+      // console.log(btn);
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      //When the user clicks the button, open the modal
+      // btn.onclick = function() {
+      //     modal.style.display = "block";
+      // }
+
+      modal.style.display = "block";
+      document.getElementById("img-id").innerHTML = id;
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+    }
+
 
   </script>
 
