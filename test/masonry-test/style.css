@@ -1,15 +1,12 @@
 * { box-sizing: border-box; }
 
-body {
-  font-family: sans-serif;
-
-}
+body { font-family: sans-serif; }
 
 /* ---- grid ---- */
 
 .grid {
   background: #EEE;
-  max-width: 1050px;
+  max-width: 1200px;
 }
 
 /* clearfix */
@@ -22,14 +19,13 @@ body {
 /* ---- grid-item ---- */
 
 .grid-item {
-  max-width: 350px;
-  height: auto;
+  width: 160px;
+  height: 120px;
   float: left;
-  border: 5px solid #fff;
-  /*border-color: hsla(0, 0%, 0%, 0.5);
-  border-radius: 5px;*/
-  /*margin: 1%;*/
-  overflow: hidden;
+  /*background: #D26;*/
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
 }
 
 .grid-item--width2 { width: 320px; }
