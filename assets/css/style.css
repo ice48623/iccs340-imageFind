@@ -221,10 +221,16 @@ button {
 
 .input-group {
   margin-top: 75px;
+  height: 40px;
 }
 
 .search {
 	font-size: 15pt;
+  top: 3px !important;
+}
+
+.search-button, #keyword {
+  height: 40px;
 }
 
 .container {
@@ -250,7 +256,6 @@ button {
 
 .hide {
   display: none !important;
-
 }
 
 #result {

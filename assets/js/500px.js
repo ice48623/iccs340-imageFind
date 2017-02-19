@@ -18,6 +18,7 @@ $('.search').on( 'click', function() {
   document.getElementById("grid-id").innerHTML = "";
   document.getElementById("result").setAttribute("class", "container");
   document.getElementById("more").classList.remove("hide");
+  document.getElementById("result-header").classList.remove("hide");
   document.getElementById("result-header").innerHTML = "Searching for... " + keyword;
   genImage_500px();
   $grid.masonry('layout');
