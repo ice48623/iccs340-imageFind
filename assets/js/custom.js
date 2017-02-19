@@ -1,4 +1,3 @@
-
 var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
 var page = 1;
 var keyword = "";
@@ -63,16 +62,11 @@ function genUserInfo(user_id){
 function openModel(imageID){
   // Get the modal
   var modal = document.getElementById('myModal');
-  // Get the button that opens the modal
-  // var btn = document.getElementById('id');
-  // console.log(btn);
-  // Get the <span> element that closes the modal
+
+  // Get the span
   var span = document.getElementsByClassName("close")[0];
 
-  //When the user clicks the button, open the modal
-  // btn.onclick = function() {
-  //     modal.style.display = "block";
-  // }
+  // Display modal when user clicks on image
   modal.style.display = "block";
 
   // When the user clicks on <span> (x), close the modal
