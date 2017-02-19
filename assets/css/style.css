@@ -9,6 +9,7 @@ body {
 .grid {
   /*background: #EEE;*/
   max-width: 1050px;
+  margin: auto;
 }
 
 /* clearfix */
@@ -250,4 +251,9 @@ button {
 .hide {
   display: none !important;
 
+}
+
+#result {
+  font-family: 'Handlee', cursive;
+  margin: auto;
 }

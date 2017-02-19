@@ -9,10 +9,16 @@ var $grid = $('.grid').masonry({
 
 $('.search').on( 'click', function() {
   page = 1;
-  keyword = document.getElementById("keyword").value;
+  input_keyword = document.getElementById("keyword").value;
+  if (input_keyword.length != 0) {
+    keyword = input_keyword;
+  } else {
+    keyword = "popular"
+  }
   document.getElementById("grid-id").innerHTML = "";
   document.getElementById("result").setAttribute("class", "container");
   document.getElementById("more").classList.remove("hide");
+  document.getElementById("result-header").innerHTML = "Searching for... " + keyword;
   genImage_500px();
   $grid.masonry('layout');
 });
