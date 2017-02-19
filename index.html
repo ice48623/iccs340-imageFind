@@ -4,17 +4,13 @@
     <link rel="stylesheet" href="./assets/css/jquery.fadeshow-0.1.1.min.css" />
 		<link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/bootstrap-theme.min.css">
   </head>
   <body>
-
-
-
     <div class="header">
 			<div class="background"></div>
-
 			<div class="content">
 				<h1 class="title">Imagefind</h1>
 				<div class="input-group">
@@ -40,14 +36,10 @@
 
       <!-- The Modal -->
       <div id="myModal" class="modal">
-
         <!-- Modal content -->
         <div class="image-modal-content">
-
           <div class="modal-img-content">
-
             <div class="image-modal-header">
-
               <h1 id="modal-img-id"></h1>
             </div>
 
@@ -55,7 +47,6 @@
               <img id="modal-img">
             </div>
           </div>
-
           <div class="modal-user-info">
             <span class="close">&times;</span>
             <div class="user-info-wrapper">
@@ -84,123 +75,19 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-
-
         </div>
-
       </div>
-
     </div>
     <a class="back-to-top" href="#" role="button">Back to top</a>
 
   </body>
-  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./assets/js/jquery-3.1.1.js"></script>
   <!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script> -->
   <script src="./assets/js/masonry.pkgd.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
   <script src="./assets/js/jquery.fadeshow-0.1.2.min.js" type="text/javascript"></script>
   <script src="./assets/js/autoplay.js"></script>
   <script src="./assets/js/custom.js"></script>
-
-  <!-- <script>
-    var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
-    var page = 1;
-    var keyword = "";
-
-    var $grid = $('.grid').masonry({
-      columnWidth: 50,
-      itemSelector: '.grid-item'
-    });
-
-    $('.search').on( 'click', function() {
-      page = 1;
-      keyword = document.getElementById("keyword").value;
-      document.getElementById("grid-id").innerHTML = "";
-      document.getElementById("result").setAttribute("class", "container");
-      document.getElementById("more").classList.remove("hide");
-      genImage_500px();
-      $grid.masonry('layout');
-    });
-
-    function genImage_500px(){
-      var url = "https://api.500px.com/v1/photos/search?term=" + keyword + "&" + cus_key + "&image_size=1080" + "&page=" + page;
-
-      $.get(url,function(json){
-        $.each(json.photos,function(i, item){
-          var $item = $('<img id="' + item.id + '" class="grid-item" src="'+ item.image_url + '"onclick="openModel(' + item.id + ')">');
-          $grid.append( $item ).masonry( 'appended', $item );
-          $grid.masonry('layout');
-        })
-      })
-    }
-
-    function genImageModal(imageID){
-      var image_size = "image_size=4"
-      var url = "https://api.500px.com/v1/photos/" + imageID + "?" + image_size + "&" + cus_key;
-      $.get(url,function(json){
-        var image = json.photo;
-        var user_id = image.user_id;
-        var name = image.name;
-        var image_url  = image.image_url;
-
-        document.getElementById("modal-img-id").innerHTML = name + " - " + imageID;
-        document.getElementById("modal-img").setAttribute("src", image_url);
-        document.getElementById("camera-model").innerHTML = image.camera;
-        document.getElementById("lens-model").innerHTML = image.lens;
-        document.getElementById("aperture-info").innerHTML = image.aperture;
-        document.getElementById("shutter-speed-info").innerHTML = image.shutter_speed;
-        document.getElementById("iso-info").innerHTML = image.iso;
-        genUserInfo(user_id);
-      })
-    }
-
-    function genUserInfo(user_id){
-      var url = "https://api.500px.com/v1/users/show?id=" + user_id + "&" + cus_key;
-      $.get(url,function(json){
-        var user = json.user;
-        var fullname = user.firstname + " " + user.lastname;
-        document.getElementById("modal-user-fullname").innerHTML = fullname;
-        document.getElementById("modal-user-avatar").setAttribute("src", user.userpic_url);
-      })
-    }
-
-    function openModel(imageID){
-      // Get the modal
-      var modal = document.getElementById('myModal');
-      // Get the button that opens the modal
-      // var btn = document.getElementById('id');
-      // console.log(btn);
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
-
-      //When the user clicks the button, open the modal
-      // btn.onclick = function() {
-      //     modal.style.display = "block";
-      // }
-      modal.style.display = "block";
-
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
-          modal.style.display = "none";
-      }
-
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
-      genImageModal(imageID);
-    }
-
-    $('#more').on( 'click', function() {
-      console.log("clicked")
-      page = page + 1;
-      genImage_500px();
-    });
-
-  </script> -->
 </html>
