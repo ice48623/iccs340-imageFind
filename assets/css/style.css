@@ -181,6 +181,7 @@ button {
   margin-right: 5px;
 }
 
+/**** Header ****/
 .background
 {
 	background: #333;
@@ -227,7 +228,7 @@ button {
 
 .container {
 	/*padding-top: 30px;*/
-	/*height: 100vh;*/
+	height: 100vh;
 }
 
 .back-to-top {
@@ -244,4 +245,9 @@ button {
 
 .back-to-top:hover {
     background-color: rgba(135, 135, 135, 0.50);
+}
+
+.hide {
+  display: none !important;
+
 }

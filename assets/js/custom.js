@@ -1,20 +1,28 @@
+
+var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
+var page = 1;
+var keyword = "";
+
 var $grid = $('.grid').masonry({
   columnWidth: 50,
   itemSelector: '.grid-item'
 });
 
-$('.append-button').on( 'click', function() {
+$('.search').on( 'click', function() {
+  page = 1;
+  keyword = document.getElementById("keyword").value;
+  document.getElementById("grid-id").innerHTML = "";
+  document.getElementById("result").setAttribute("class", "container");
+  document.getElementById("more").classList.remove("hide");
   genImage_500px();
+  $grid.masonry('layout');
 });
 
-var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
-
 function genImage_500px(){
-  // var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
-  var url = "https://api.500px.com/v1/photos/search?term=" + "nature" + "&" + cus_key + "&image_size=1080"
+  var url = "https://api.500px.com/v1/photos/search?term=" + keyword + "&" + cus_key + "&image_size=1080" + "&page=" + page;
+
   $.get(url,function(json){
     $.each(json.photos,function(i, item){
-      // console.log(item);
       var $item = $('<img id="' + item.id + '" class="grid-item" src="'+ item.image_url + '"onclick="openModel(' + item.id + ')">');
       $grid.append( $item ).masonry( 'appended', $item );
       $grid.masonry('layout');
@@ -23,8 +31,6 @@ function genImage_500px(){
 }
 
 function genImageModal(imageID){
-  // clearBox("myModal");
-  // var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
   var image_size = "image_size=4"
   var url = "https://api.500px.com/v1/photos/" + imageID + "?" + image_size + "&" + cus_key;
   $.get(url,function(json){
@@ -32,7 +38,7 @@ function genImageModal(imageID){
     var user_id = image.user_id;
     var name = image.name;
     var image_url  = image.image_url;
-    console.log(image);
+
     document.getElementById("modal-img-id").innerHTML = name + " - " + imageID;
     document.getElementById("modal-img").setAttribute("src", image_url);
     document.getElementById("camera-model").innerHTML = image.camera;
@@ -42,8 +48,6 @@ function genImageModal(imageID){
     document.getElementById("iso-info").innerHTML = image.iso;
     genUserInfo(user_id);
   })
-
-
 }
 
 function genUserInfo(user_id){
@@ -51,18 +55,14 @@ function genUserInfo(user_id){
   $.get(url,function(json){
     var user = json.user;
     var fullname = user.firstname + " " + user.lastname;
-    console.log(fullname);
     document.getElementById("modal-user-fullname").innerHTML = fullname;
     document.getElementById("modal-user-avatar").setAttribute("src", user.userpic_url);
-
   })
 }
 
 function openModel(imageID){
   // Get the modal
-  console.log(imageID);
   var modal = document.getElementById('myModal');
-
   // Get the button that opens the modal
   // var btn = document.getElementById('id');
   // console.log(btn);
@@ -73,7 +73,6 @@ function openModel(imageID){
   // btn.onclick = function() {
   //     modal.style.display = "block";
   // }
-
   modal.style.display = "block";
 
   // When the user clicks on <span> (x), close the modal
@@ -87,6 +86,11 @@ function openModel(imageID){
           modal.style.display = "none";
       }
   }
-
   genImageModal(imageID);
 }
+
+$('#more').on( 'click', function() {
+  console.log("clicked")
+  page = page + 1;
+  genImage_500px();
+});
