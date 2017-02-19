@@ -1,4 +1,5 @@
-# imageFind
+#imageFind
+
 ## Brief Infomation:
   A web for searching photo by keyword from 500px.
 
@@ -17,8 +18,8 @@
   * GET users/show
 
 ## Known bugs:
-  images layout did not work properly
-  
+* images layout did not work properly
+
 ## Collaborator:
 1) Soraya Sakonwittayanon - 5780758
 
