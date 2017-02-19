@@ -3,27 +3,20 @@ $(function(){
     correctRatio: true,
     shuffle: true,
     speed: 10000,
-    images: ['./assets/images/maxresdefault.jpg',
-         './assets/images/rain.jpg',
-         './assets/images/rain-umbrella.jpg']
+    images: ['./assets/img/maxresdefault.jpg',
+         './assets/img/rain.jpg',
+         './assets/img/rain-umbrella.jpg']
   });
 });
 
-// $('a[href^="#result"]').on('click', function(event) {
-//     var target = $(this.getAttribute('href'));
-//     if( target.length ) {
-//         event.preventDefault();
-//         $('html, body').stop().animate({
-//             scrollTop: target.offset().top
-//         }, 500);
-//     }
-// });
-
-$(function() {
-	$('a[href*=#result]').on('click', function(e) {
-		e.preventDefault();
-		$('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
-	});
+$('a[href^="#result"]').on('click', function(event) {
+    var target = $(this.getAttribute('href'));
+    if( target.length ) {
+        event.preventDefault();
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top
+        }, 1000);
+    }
 });
 
 jQuery(document).ready(function() {
