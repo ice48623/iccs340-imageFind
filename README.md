@@ -15,8 +15,10 @@
   * GET photos/search
   * GET photos
   * GET users/show
+
 ## Known bugs:
   images layout did not work properly
+  
 ## Collaborator:
 1) Soraya Sakonwittayanon - 5780758
 
