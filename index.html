@@ -30,15 +30,53 @@
       <div id="myModal" class="modal">
 
         <!-- Modal content -->
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close">&times;</span>
-            <h1 id="modal-img-id"></h1>
-          </div>
-          <div class="modal-body">
+        <div class="image-modal-content">
 
-            <img id="modal-img">
+          <div class="modal-img-content">
+
+            <div class="image-modal-header">
+
+              <h1 id="modal-img-id"></h1>
+            </div>
+
+            <div class="image-modal-body">
+              <img id="modal-img">
+            </div>
           </div>
+
+          <div class="modal-user-info">
+            <span class="close">&times;</span>
+            <div class="user-info-wrapper">
+              <div id="modal-user-avatar-wrapper" class="center-block">
+                <img id="modal-user-avatar" class="img-responsive img-circle">
+              </div>
+              <h2 id="modal-user-fullname"></h2>
+              <div id="modal-camera">
+                <div id="modal-camera-info">
+                  <img id="camera-vector" src="./assets/img/camera.png">
+                  <h5 id="camera-model"></h5>
+                  <h5 id="lens-model"></h5>
+                </div>
+                <div id="modal-camera-setting">
+                  <div id="aperture">
+                    <img class="left" src="./assets/img/aperture.png">
+                    <p class="left" id="aperture-info"></p>
+                  </div>
+                  <div id="shutter-speed">
+                    <img class="left" src="./assets/img/shutter-speed.png">
+                    <p class="left" id="shutter-speed-info"></p>
+                  </div>
+                  <div id="iso">
+                    <img class="left" src="./assets/img/iso.png">
+                    <p class="left" id="iso-info"></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
         </div>
 
       </div>
@@ -48,7 +86,6 @@
   </body>
 
   <script>
-    // external js: masonry.pkgd.js
 
     var $grid = $('.grid').masonry({
       columnWidth: 50,
@@ -56,28 +93,13 @@
     });
 
     $('.append-button').on( 'click', function() {
-
       genImage_500px();
-      // openModel();
-      // var elems = [ getItemElement(), getItemElement(), getItemElement() ];
-      // var $item = $('<img class="grid-item" src=http://eskipaper.com/images/landscape-sunset-15.jpg>');
-      // var $elems = $( elems );
-      // $grid.append( $item ).masonry( 'appended', $item );
     });
 
-    // create <div class="grid-item"></div>
-    function getItemElement() {
-      var elem = document.createElement('div');
-      var wRand = Math.random();
-      var hRand = Math.random();
-      var widthClass = wRand > 0.8 ? 'grid-item--width3' : wRand > 0.6 ? 'grid-item--width2' : '';
-      var heightClass = hRand > 0.85 ? 'grid-item--height4' : hRand > 0.6 ? 'grid-item--height3' : hRand > 0.35 ? 'grid-item--height2' : '';
-      elem.className = 'grid-item ' + widthClass + ' ' + heightClass;
-      return elem;
-    }
+    var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
 
     function genImage_500px(){
-      var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
+      // var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
       var url = "https://api.500px.com/v1/photos/search?term=" + "nature" + "&" + cus_key + "&image_size=1080"
       $.get(url,function(json){
         $.each(json.photos,function(i, item){
@@ -91,25 +113,38 @@
 
     function genImageModal(imageID){
       // clearBox("myModal");
-      var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
+      // var cus_key = "consumer_key=oHqaYKxBd5NTq4xZMG1cchZuluycWyr2BI4Ehng4";
       var image_size = "image_size=4"
       var url = "https://api.500px.com/v1/photos/" + imageID + "?" + image_size + "&" + cus_key;
       $.get(url,function(json){
         var image = json.photo;
-        var user = image.user;
+        var user_id = image.user_id;
         var name = image.name;
         var image_url  = image.image_url;
         console.log(image);
-        document.getElementById("modal-img-id").innerHTML = imageID;
-
-        var img_elem = document.createElement("img");
-        img_elem.setAttribute("src", image_url);
+        document.getElementById("modal-img-id").innerHTML = name + " - " + imageID;
         document.getElementById("modal-img").setAttribute("src", image_url);
+        document.getElementById("camera-model").innerHTML = image.camera;
+        document.getElementById("lens-model").innerHTML = image.lens;
+        document.getElementById("aperture-info").innerHTML = image.aperture;
+        document.getElementById("shutter-speed-info").innerHTML = image.shutter_speed;
+        document.getElementById("iso-info").innerHTML = image.iso;
+        genUserInfo(user_id);
       })
+
+
     }
 
-    function clearBox(elementID) {
-      document.getElementById(elementID).innerHTML = "";
+    function genUserInfo(user_id){
+      var url = "https://api.500px.com/v1/users/show?id=" + user_id + "&" + cus_key;
+      $.get(url,function(json){
+        var user = json.user;
+        var fullname = user.firstname + " " + user.lastname;
+        console.log(fullname);
+        document.getElementById("modal-user-fullname").innerHTML = fullname;
+        document.getElementById("modal-user-avatar").setAttribute("src", user.userpic_url);
+
+      })
     }
 
     function openModel(imageID){
