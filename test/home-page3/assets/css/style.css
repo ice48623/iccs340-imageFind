@@ -3,27 +3,28 @@
 	background: #333;
 	position: absolute;;
 	width: 100%;
-	height: 636px;
+	height: 100vh;
 	top: 0;
 	left: 0;
 	z-index: -1;
 }
 
 .header{
-	height: 480px;;
+	height: 100vh;
 }
 
 .content
 {
 	width: 55%;
-	margin: 155px auto;
+	/*margin: 155px auto;*/
+	/*padding: 155px auto;*/
 	text-align: center;
 
 }
 
 .title {
-  /*margin-top: 10%;*/
-	padding-top: 35px;
+  margin-top: 0% !important;
+	padding-top: 35px !important;
   font-family: 'Sansita', sans-serif;
   font-size: 55pt;
   /*color: #f98697;*/
@@ -40,7 +41,7 @@
 }
 
 .container {
-	padding-top: 30px;
+	/*padding-top: 30px;*/
 	height: 100vh;
 }
 
