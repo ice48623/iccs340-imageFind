@@ -257,3 +257,9 @@ button {
   font-family: 'Handlee', cursive;
   margin: auto;
 }
+
+.load {
+  height: 50px;
+  font-size: 15pt !important;
+  border-radius: 10px 10px 0 0 !important;
+}
