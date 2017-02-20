@@ -5,6 +5,8 @@
 
   By type in a keyword, photos will be added and arranged at the bottom of the page.
 
+  Clicked on each photo, there will be a popup telling more information about that photo including photographer.
+
   It can be load more photos by click "load more"
 ## Framework/Libraries:
 * Masonry
@@ -19,6 +21,7 @@
 
 ## Known bugs:
 * images layout did not work properly
+* when click the search button, it suppose to scroll down but it just jump down.
 
 ## Collaborator:
 1) Soraya Sakonwittayanon - 5780758
