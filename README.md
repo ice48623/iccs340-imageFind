@@ -23,8 +23,6 @@
 * images layout did not work properly
   * result images
   * popup information
-* when click the search button, it suppose to scroll down but it just jump down.
-
 ## Collaborator:
 1) Soraya Sakonwittayanon - 5780758
 
