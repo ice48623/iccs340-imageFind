@@ -9,16 +9,16 @@ $(function(){
   });
 });
 
-// $('a[href^="#result"]').on('click', function(event) {
-//
-//   var target = $(this.getAttribute('href'));
-//   if( target.length ) {
-//       event.preventDefault();
-//       $('html, body').stop().animate({
-//           scrollTop: target.offset().top
-//       }, 1000);
-//   }
-// });
+$('a[href^="#result"]').on('click', function(event) {
+
+  var target = $(this.getAttribute('href'));
+  if( target.length ) {
+      event.preventDefault();
+      $('html, body').stop().animate({
+          scrollTop: target.offset().top
+      }, 500);
+  }
+});
 
 jQuery(document).ready(function() {
     var offset = 220;
