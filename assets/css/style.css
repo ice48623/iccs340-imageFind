@@ -117,12 +117,12 @@ button {
 
 .image-modal-body {
   padding: 2px 16px;
-  height: 85%;
+  /*height: 85%;*/
 }
 
 #modal-img {
   max-width: 100%;
-  max-height: 100%;
+  /*max-height: 80%;*/
 }
 
 .modal-user-info {
@@ -148,7 +148,7 @@ button {
 
 #modal-camera {
   height: 150px;
-  width: 200px;
+  width: 90%;
   margin: auto;
 }
 
@@ -158,23 +158,23 @@ button {
 
 #modal-camera-info {
   /*margin-left: 3%;*/
-  float: left;
+  /*float: left;*/
 }
 
 #modal-camera-setting {
-  float: left;
-  margin-left: 8%;
-  margin-top: 5px;
+  /*float: left;*/
+  /*margin-left: 8%;*/
+  /*margin-top: 5px;*/
+  width: 30%;
+  margin: auto;
 }
 
-#aperture {
-  height: auto;
-  width: auto;
-  margin-bottom: 20px;
-}
-
-#shutter-speed {
-  margin-bottom: 20px;
+#aperture, #shutter-speed, #iso {
+  /*height: auto;*/
+  width: 100px;
+  height: 30px;
+  margin: auto;
+  /*margin-bottom: 20px;*/*/
 }
 
 .left {
@@ -267,4 +267,8 @@ button {
   height: 50px;
   font-size: 15pt !important;
   border-radius: 10px 10px 0 0 !important;
+}
+
+#modal-img-id {
+  font-size: 20pt !important;
 }
