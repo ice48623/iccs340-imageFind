@@ -112,7 +112,7 @@ button {
   padding: 2px 16px;
   /*background-color: #5cb85c;*/
   color: white;
-  height: 15%;
+  height: 10%;
   border: none;
 }
 
@@ -121,6 +121,9 @@ button {
   width: 90%;
   margin: auto;
   height: 86%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 #modal-img {
